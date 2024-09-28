@@ -39,19 +39,85 @@ export type OrderItem = {
   _id: string;
 };
 
-export type Order={
-  orderItems:OrderItem[];
+export type Order = {
+  orderItems: OrderItem[];
   subtotal: number;
   tax: number;
   shippingCharges: number;
   discount: number;
   total: number;
-  shippingInfo:ShippingInfo;
-  status:string;
-  user:{
-    name:string;
-    _id:string;
+  shippingInfo: ShippingInfo;
+  status: string;
+  user: {
+    name: string;
+    _id: string;
   };
-  _id:string;
+  _id: string;
+};
+type CountAndChange = {
+  revenue: number;
+  product: number;
+  user: number;
+  order: number;
+};
+export type LatestTransaction = {
+  _id: string;
+  amount: number;
+  discount: number;
+  quantity: number;
+  status: string;
+};
+export type Stats = {
+  categoryCount: Record<string, number>[];
+  changePercent: CountAndChange;
+  count: CountAndChange;
+  chart: {
+    order: number[];
+    revenue: number[];
+  };
+  userRatio: {
+    male: number;
+    female: number;
+  };
+  latestTransaction: LatestTransaction;
+};
+export type Pie = {
+  orderFullfillment: {
+    processing: number;
+    shipped: number;
+    delivered: number;
+  };
+  productsCategories: Record<string, number>[];
+  stockAvailablity: {
+    inStock: number;
+    outOfStock: number;
+  };
+  revenueDistribution: {
+    netMargin: number;
+    discount: number;
+    productionCost: number;
+    burnt: number;
+    marketingCost: number;
+  };
+  usersAgeGroup: {
+    teen: number;
+    adult: number;
+    old: number;
+  };
+  adminCustomer: {
+    admin: number;
+    customer: number;
+  };
+};
 
+export type Bar={
+  users: number[],
+  products: number[],
+  orders: number[],
+}
+export type Line={
+  users: number[],
+  products: number[],
+  discount:number[],
+  revenue:number[],
 }

@@ -10,7 +10,7 @@ import { Skeleton } from "../../components/loader";
 import { useAllProductsQuery } from "../../redux/api/productApi";
 import { server } from "../../redux/store";
 import { CustomError } from "../../types/api-types";
-import { UserReducerInitialState } from "../../types/reducer-types";
+import {  UserReducerInitialState } from "../../types/reducer-types";
 
 interface DataType {
   photo: ReactElement;
@@ -53,7 +53,8 @@ const Products = () => {
   if (isError) toast.error((error as CustomError).data.message);
 
   const [rows, setRows] = useState<DataType[]>([]);
-
+  
+  
   useEffect(() => {
     if (data)
       setRows(
