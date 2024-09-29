@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { lazy, Suspense, useEffect } from "react";
 const Home = lazy(() => import("./pages/Home"));
 const Search = lazy(() => import("./pages/Search"));
@@ -22,6 +22,7 @@ import { UserReducerInitialState } from "./types/reducer-types";
 import ProptectedRoute from "./components/protected-route";
 import Checkout from "./pages/checkout";
 
+
 //admin import
 
 const Dashboard = lazy(() => import("./pages/admin/dashboard"));
@@ -44,6 +45,7 @@ const TransactionManagement = lazy(
 
 const App = () => {
   const dispatch = useDispatch();
+ 
   const { user, loading } = useSelector(
     (state: { userReducer: UserReducerInitialState }) => state.userReducer
   );
@@ -53,7 +55,9 @@ const App = () => {
         const data = await getUser(user.uid);
         console.log("logged in");
         dispatch(userExist(data.user));
-      } else dispatch(userNotExist());
+      } else{ dispatch(userNotExist())
+       
+      };
     });
   }, []);
 
